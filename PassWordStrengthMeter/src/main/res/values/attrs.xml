@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PasswordStrengthMeter">
+        <attr name="showStrengthLabel" format="boolean" />
+        <attr name="showStrengthBar" format="boolean"/>
+        <attr name="animateChanges" format="boolean"/>
+        <attr name="animationDuration" format="integer"/>
+        <attr name="strengthBarHeight" format="dimension"/>
+        <attr name="labelTextSize" format="dimension"/>
+    </declare-styleable>
+</resources>
