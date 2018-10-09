@@ -8,6 +8,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
@@ -118,7 +119,7 @@ class StrengthIndicatorView extends View {
     public void setSecurityLevel(int level, boolean force){
         if(force || this.securityLevel != level){
             this.securityLevel = level;
-            correctLineWidth = (getMeasuredWidth()/(levels.length-1))*level;
+            correctLineWidth = level+1 == levels.length ? getWidth() : (getMeasuredWidth()/(levels.length-1))*level;
             correctColor = getResources().getColor(levels[level].getIndicatorColor());
             refresh();
         }

@@ -312,7 +312,7 @@ public class PasswordStrengthMeter extends LinearLayout {
         @Override
         public int calculatePasswordSecurityLevel(String password) {
             int level = 0;
-            int minLength = passwordStrengthCalculator.getMinimumlength();
+            int minLength = getMinimumlength();
 
             // Checks if password meets minimum length
             if (password.length() < minLength) {
