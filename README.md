@@ -10,7 +10,7 @@ Password strength meter is an easy-to-implement and flexible password strength i
 ~~~~
 allprojects {
     repositories {
-        maven { url 'https://jitpack.io' }
+        maven { url  }
     }
 }
 ~~~~
@@ -19,7 +19,7 @@ App level build.gradle
 
 ~~~~
 dependencies {
-    implementation 'se.gustav.aaro:PasswordStrengthMeter'
+    implementation 'se.aaro.gustav:passwordstrengthmeter:0.1'
 }
 ~~~~
 
@@ -105,7 +105,7 @@ meter.setPasswordStrengthCalculator(new PasswordStrengthCalculator() {
 
 ## Password strength levels
 
-PasswordStrengthMeter has 5 (or 6 if you count level 0) default password strength levels. These are simply `PasswordStrengthLevel` that defines a diplay name and a color associated with the level. These are stored in an array, where the index corresponds to the numerical "level" or "score" from the password strength calculation algorithm. 
+PasswordStrengthMeter has 5 (or 6 if you count level 0) default password strength levels. These are simply `PasswordStrengthLevel` objects that defines a diplay name and a color associated with the level. These are stored in an array, where the index corresponds to the numerical "level" or "score" from the password strength calculation algorithm. 
 
 The default levels are defined as follows:
 ~~~~
@@ -128,7 +128,7 @@ meter.setStrengthLevels(new PasswordStrengthLevel[]{
         new PasswordStrengthLevel("Level 3", android.R.color.holo_green_light)});
 ~~~~
 
-**NOTE** that you for the best result should provide the meter with a number of levels that is adapted for the strength esitmation algorithm used. I.e. if the algorithm yields a level between 0 and 5 (as the default implementation), you should provide the meter with a total of 6 strength levels. 
+**NOTE** that for the best result, you should provide the meter with a number of levels that is adapted for the strength esitmation algorithm used. I.e. if the algorithm yields a level between 0 and 5 (as the default implementation), you should provide the meter with a total of 6 strength levels. 
 
 
 
