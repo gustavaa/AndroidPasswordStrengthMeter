@@ -31,10 +31,13 @@ public class MainActivity extends AppCompatActivity {
                 new PasswordStrengthLevel("Level 1", android.R.color.holo_red_light),
                 new PasswordStrengthLevel("Level 2", android.R.color.holo_orange_light),
                 new PasswordStrengthLevel("Level 4", android.R.color.holo_green_light)});
+        meter.setAnimationDuration(300);
+        meter.setShowStrengthIndicator(true);
+        meter.setShowStrengthLabel(true);
 
 
         LinearLayout ll = findViewById(R.id.container);
-        ll.addView(meter);
+        //ll.addView(meter);
 
     }
 }

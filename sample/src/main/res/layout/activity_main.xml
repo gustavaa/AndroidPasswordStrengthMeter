@@ -24,7 +24,8 @@
         app:showStrengthLabel="true"
         app:showStrengthBar="true"
         android:id="@+id/passwordInputMeter"
-        app:animationDuration="500"/>
+        app:animationDuration="300"
+        app:labelTextSize="12sp"/>
 
 
 </LinearLayout>
