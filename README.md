@@ -4,7 +4,7 @@ Password strength meter is an easy-to-implement and flexible password strength i
 
 <img src="https://s2.gifyu.com/images/ezgif.com-gif-makerb90cdc0bcfb522cb.gif" width="650">
 
-# Usage
+## Usage
 
 **Project level build.gradle**
 ~~~~gradle
@@ -23,9 +23,9 @@ dependencies {
 }
 ~~~~
 
-# Examples
+## Examples
 
-## XML
+### XML
 
 PasswordStrengthMeter can be initialized by defining it in a layput XML file, for example:
 ~~~~xml
@@ -48,7 +48,7 @@ PasswordStrengthMeter meter = findViewById(R.id.passwordInputMeter);
 meter.setEditText(passwordInputEditText);
 ~~~~
 
-### XML properties
+#### XML properties
 * **showStrengthBar:** Define whether or not the view should show the strength indicator bar. Default: true
 * **strengthBarHeight:** The height of the strength indicator bar. Default: 5dp
 * **animateChanges:** Define whether or not the bar should animate changes. Default: true
@@ -56,7 +56,7 @@ meter.setEditText(passwordInputEditText);
 * **showStrengthLabel:** Define whether or not the view should show a label which show the current strength level display name. Default: true
 * **labelTextSize:** The label text size. Default: 12sp
 
-## Java
+### Java
 PasswordStrengthMeter can also be initalized programatically:
 ~~~~java
 PasswordStrengthMeter meter = new PasswordStrengthMeter(this);
@@ -69,10 +69,10 @@ meter.setShowStrengthIndicator(true);
 meter.setShowStrengthLabel(true);
 ~~~~
 
-# Customization
+## Customization
 Apart from the basic cosmetic customization described above, PasswordStrengthMeter can also be customized in other aspects.
 
-## Password strength calculation algorithm
+### Password strength calculation algorithm
 
 PasswordStrengthMeter implements a default algorithm for pasword strength estimation, altough it is very basic and should not be considered the main contribution of this library. Instead, I recommend you to implement an algorithm that fits your system the best using the `PasswordStrengtCalculator`interface: 
 
@@ -103,7 +103,7 @@ meter.setPasswordStrengthCalculator(new PasswordStrengthCalculator() {
     });
 ~~~~
 
-## Password strength levels
+### Password strength levels
 
 PasswordStrengthMeter has 5 (or 6 if you count level 0) default password strength levels. These are simply `PasswordStrengthLevel` objects that defines a display name and a color associated with the level. These are stored in an array, where the index corresponds to the numerical "level" or "score" from the password strength calculation algorithm. 
 
