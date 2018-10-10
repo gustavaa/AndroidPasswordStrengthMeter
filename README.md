@@ -7,7 +7,7 @@ Password strength meter is an easy-to-implement and flexible password strength i
 # Usage
 
 **Project level build.gradle**
-~~~~
+~~~~gradle
 allprojects {
     repositories {
         jcenter()
@@ -17,7 +17,7 @@ allprojects {
 
 App level build.gradle
 
-~~~~
+~~~~gradle
 dependencies {
     implementation 'se.aaro.gustav:passwordstrengthmeter:0.1'
 }
@@ -28,7 +28,7 @@ dependencies {
 ## XML
 
 PasswordStrengthMeter can be initialized by defining it in a layput XML file, for example:
-~~~~
+~~~~xml
     <se.aaro.gustav.passwordstrengthmeter.PasswordStrengthMeter 
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@ PasswordStrengthMeter can be initialized by defining it in a layput XML file, fo
 ~~~~
 
 Then all you have to do is to set it up like this in your activity of fragment
-~~~~
+~~~~java
 PasswordStrengthMeter meter = findViewById(R.id.passwordInputMeter);
 meter.setEditText(passwordInputEditText);
 ~~~~
@@ -58,7 +58,7 @@ meter.setEditText(passwordInputEditText);
 
 ## Java
 PasswordStrengthMeter can also be initalized programatically:
-~~~~
+~~~~java
 PasswordStrengthMeter meter = new PasswordStrengthMeter(this);
 meter.setEditText(passwordInput);
 linearLayout.addView(meter);
@@ -76,7 +76,7 @@ Apart from the basic cosmetic customization described above, PasswordStrengthMet
 
 PasswordStrengthMeter implements a default algorithm for pasword strength estimation, altough it is very basic and should not be considered the main contribution of this library. Instead, I recommend you to implement an algorithm that fits your system the best using the `PasswordStrengtCalculator`interface: 
 
-~~~~
+~~~~java
 meter.setPasswordStrengthCalculator(new PasswordStrengthCalculator() {
         @Override
         public int calculatePasswordSecurityLevel(String password) {
@@ -108,7 +108,7 @@ meter.setPasswordStrengthCalculator(new PasswordStrengthCalculator() {
 PasswordStrengthMeter has 5 (or 6 if you count level 0) default password strength levels. These are simply `PasswordStrengthLevel` objects that defines a display name and a color associated with the level. These are stored in an array, where the index corresponds to the numerical "level" or "score" from the password strength calculation algorithm. 
 
 The default levels are defined as follows:
-~~~~
+~~~~java
 PasswordStrengthLevel[] strengthLevels = {
     new PasswordStrengthLevel("Too short", android.R.color.darker_gray), // level 0
     new PasswordStrengthLevel("Weak", android.R.color.holo_red_dark), // level 1
@@ -119,7 +119,7 @@ PasswordStrengthLevel[] strengthLevels = {
 ~~~~
 
 These levels can easily be changed by simply creating a similar array and call `setStrengthLevels`:
-~~~~
+~~~~java
 PasswordStrengthMeter meter = new PasswordStrengthMeter(this);
 meter.setStrengthLevels(new PasswordStrengthLevel[]{
         new PasswordStrengthLevel("Level 0", android.R.color.white),
