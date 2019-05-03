@@ -338,6 +338,8 @@ public class PasswordStrengthMeter extends LinearLayout {
             boolean hasSpecial = password.matches(".*[!@#€£©§|≈$%^&*].*");
             if (hasSpecial) ++level;
 
+            if (passwordAccepted(level)) onPassWordAccepted(password);
+
             return level;
         }
 
