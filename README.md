@@ -20,7 +20,7 @@ App level build.gradle
 
 ~~~~gradle
 dependencies {
-    implementation 'se.aaro.gustav:passwordstrengthmeter:0.1'
+    implementation 'se.aaro.gustav:passwordstrengthmeter:0.2'
 }
 ~~~~
 
