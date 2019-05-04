@@ -23,7 +23,7 @@ public interface PasswordStrengthCalculator {
      * Defines the minimum length of a password
      * @return An integer value which represents the minimum length of a password.
      */
-    int getMinimumlength();
+    int getMinimumLength();
 
 
     /**
@@ -37,6 +37,6 @@ public interface PasswordStrengthCalculator {
      * Is called when the password is accepted.
      * @param password the current password.
      */
-    void onPassWordAccepted(String password);
+    void onPasswordAccepted(String password);
 
 }

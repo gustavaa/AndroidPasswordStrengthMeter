@@ -89,7 +89,7 @@ meter.setPasswordStrengthCalculator(new PasswordStrengthCalculator() {
         }
 
         @Override
-        public int getMinimumlength() {
+        public int getMinimumLength() {
             // Define the minimum length of a password. Anything below this should always yield a score of 0
             return 8;
         }
@@ -101,7 +101,7 @@ meter.setPasswordStrengthCalculator(new PasswordStrengthCalculator() {
         }
 
         @Override
-        public void onPassWordAccepted(String password) {
+        public void onPasswordAccepted(String password) {
           // Called when the password entered meets your requirements of length and strength levels
         }
     });

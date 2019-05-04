@@ -177,6 +177,7 @@ public class PasswordStrengthMeter extends LinearLayout {
     private void refresh(){
         if (input != null) {
             int level = normalizeLevel(passwordStrengthCalculator.calculatePasswordSecurityLevel(input.getText().toString()));
+
             if (showStrengthBar) {
                 strengthIndicatorView.setSecurityLevel(normalizeLevel(level), false);
             }
@@ -275,7 +276,7 @@ public class PasswordStrengthMeter extends LinearLayout {
 
     public void setEditText(EditText passwordInput) {
         passwordInput.addTextChangedListener(textWatcher);
-        input = passwordInput;
+        this.input = passwordInput;
     }
 
     /**
@@ -306,13 +307,14 @@ public class PasswordStrengthMeter extends LinearLayout {
 
     /**
      * Default algorithm for calculating password strength, providing 5 basic strength levels
+     * NOTE: This is a very basic algorithm and you are strongly advised to implement one customized to your needs
      */
 
     private PasswordStrengthCalculator defaultPassWordStrengthCalculator = new PasswordStrengthCalculator() {
         @Override
         public int calculatePasswordSecurityLevel(String password) {
             int level = 0;
-            int minLength = getMinimumlength();
+            int minLength = getMinimumLength();
 
             // Checks if password meets minimum length
             if (password.length() < minLength) {
@@ -342,7 +344,7 @@ public class PasswordStrengthMeter extends LinearLayout {
         }
 
         @Override
-        public int getMinimumlength() {
+        public int getMinimumLength() {
             return 8;
         }
 
@@ -352,7 +354,7 @@ public class PasswordStrengthMeter extends LinearLayout {
         }
 
         @Override
-        public void onPassWordAccepted(String password) {
+        public void onPasswordAccepted(String password) {
 
         }
     };
