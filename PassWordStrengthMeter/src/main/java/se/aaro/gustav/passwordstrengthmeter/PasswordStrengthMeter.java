@@ -141,12 +141,12 @@ public class PasswordStrengthMeter extends LinearLayout {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                refresh();
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                refresh();
             }
         };
     }
@@ -177,6 +177,9 @@ public class PasswordStrengthMeter extends LinearLayout {
     private void refresh(){
         if (input != null) {
             int level = normalizeLevel(passwordStrengthCalculator.calculatePasswordSecurityLevel(input.getText().toString()));
+
+            if(this.passwordStrengthCalculator.passwordAccepted(level))
+                this.passwordStrengthCalculator.onPasswordAccepted(input.getText().toString());
 
             if (showStrengthBar) {
                 strengthIndicatorView.setSecurityLevel(normalizeLevel(level), false);
