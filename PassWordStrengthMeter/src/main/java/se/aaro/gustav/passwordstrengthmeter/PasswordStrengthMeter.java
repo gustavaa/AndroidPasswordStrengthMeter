@@ -40,6 +40,7 @@ public class PasswordStrengthMeter extends LinearLayout {
 
     public static final int ID_MODIFIER = 321;
 
+    private static String TAG = "PasswordStrengthMeter";
     private PasswordStrengthCalculator passwordStrengthCalculator;
 
     // The default array with the defined strength display names and colors for the different levels in order
@@ -62,6 +63,8 @@ public class PasswordStrengthMeter extends LinearLayout {
         super(context);
         this.context = context;
         setId(View.generateViewId());
+        strengthBarHeight = convertDpToPx(5);
+        textSize = convertDpToPx(14);
         initStrengthMeter();
     }
 
@@ -108,8 +111,6 @@ public class PasswordStrengthMeter extends LinearLayout {
         setOrientation(HORIZONTAL);
         setVerticalGravity(Gravity.CENTER_VERTICAL);
         this.setPasswordStrengthCalculator(defaultPassWordStrengthCalculator);
-
-        if (strengthBarHeight == 0) strengthBarHeight = convertDpToPx(5);
 
         if (showStrengthBar) {
             strengthIndicatorView = new StrengthIndicatorView(context);
@@ -261,6 +262,7 @@ public class PasswordStrengthMeter extends LinearLayout {
         strengthIndicatorView.setPasswordStrengthLevels(strengthLevels);
         strengthIndicatorView.invalidate();
         strengthLabel.setMinWidth(getMaxWidth());
+        refresh();
         invalidate();
     }
 
