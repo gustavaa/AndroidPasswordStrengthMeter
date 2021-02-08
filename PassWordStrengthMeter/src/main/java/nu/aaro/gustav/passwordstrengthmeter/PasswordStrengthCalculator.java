@@ -1,13 +1,9 @@
-package se.aaro.gustav.passwordstrengthmeter;
+package nu.aaro.gustav.passwordstrengthmeter;
 
 /**
  * Created by gustavaaro on 2018-10-04.
  */
 
-
-/**
- * Created by gustavaaro on 2016-11-09.
- */
 
 public interface PasswordStrengthCalculator {
 

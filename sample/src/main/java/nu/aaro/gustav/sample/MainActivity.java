@@ -1,14 +1,13 @@
-package se.aaro.gustav.sample;
+package nu.aaro.gustav.sample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import se.aaro.gustav.passwordstrengthmeter.PasswordStrengthCalculator;
-import se.aaro.gustav.passwordstrengthmeter.PasswordStrengthLevel;
-import se.aaro.gustav.passwordstrengthmeter.PasswordStrengthMeter;
+import nu.aaro.gustav.passwordstrengthmeter.PasswordStrengthLevel;
+import nu.aaro.gustav.passwordstrengthmeter.PasswordStrengthMeter;
+
 
 public class MainActivity extends AppCompatActivity {
 
