@@ -2,7 +2,7 @@
 
 Password strength meter is an easy-to-implement and flexible password strength indicator for Android. It is fully customizable and features an animated strength indicator and a matching label. 
 
-<img src="https://s2.gifyu.com/images/ezgif.com-gif-makerb90cdc0bcfb522cb.gif" width="650">
+<img src="https://media2.giphy.com/media/PMuSdJrT7U1G0kdaCr/giphy.gif" width="650">
 
 ## Usage
 
@@ -11,7 +11,7 @@ Password strength meter is an easy-to-implement and flexible password strength i
 ~~~~gradle
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
     }
 }
 ~~~~
@@ -20,7 +20,7 @@ App level build.gradle
 
 ~~~~gradle
 dependencies {
-    implementation 'se.aaro.gustav:passwordstrengthmeter:0.+'
+    implementation 'nu.aaro.gustav:passwordstrengthmeter:0.4'
 }
 ~~~~
 
@@ -28,10 +28,10 @@ dependencies {
 
 ### XML
 
-PasswordStrengthMeter can be initialized by defining it in a layput XML file, for example:
+PasswordStrengthMeter can be initialized by defining it in a layout XML file, for example:
 
 ~~~~xml
-    <se.aaro.gustav.passwordstrengthmeter.PasswordStrengthMeter 
+    <nu.aaro.gustav.passwordstrengthmeter.PasswordStrengthMeter
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,7 +78,7 @@ Apart from the basic cosmetic customization described above, PasswordStrengthMet
 
 ### Password strength calculation algorithm
 
-PasswordStrengthMeter implements a default algorithm for pasword strength estimation, altough it is very basic and should not be considered the main contribution of this library. Instead, I recommend you to implement an algorithm that fits your system the best using the `PasswordStrengtCalculator`interface: 
+PasswordStrengthMeter implements a default algorithm for password strength estimation, although it is very basic and should not be considered the main contribution of this library. Instead, I recommend you to implement an algorithm that fits your system the best using the `PasswordStrengthCalculator`interface:
 
 ~~~~java
 meter.setPasswordStrengthCalculator(new PasswordStrengthCalculator() {
