@@ -2,7 +2,7 @@
 
 Password strength meter is an easy-to-implement and flexible password strength indicator for Android. It is fully customizable and features an animated strength indicator and a matching label. 
 
-<img src="https://media2.giphy.com/media/PMuSdJrT7U1G0kdaCr/giphy.gif" width="650">
+<img src="https://media2.giphy.com/media/PMuSdJrT7U1G0kdaCr/giphy.gif" width="450">
 
 ## Usage
 
