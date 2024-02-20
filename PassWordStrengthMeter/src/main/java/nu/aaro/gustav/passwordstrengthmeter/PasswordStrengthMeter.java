@@ -42,6 +42,7 @@ public class PasswordStrengthMeter extends LinearLayout {
 
     private static String TAG = "PasswordStrengthMeter";
     private PasswordStrengthCalculator passwordStrengthCalculator;
+    private OnPasswordAcceptedListener onPasswordAcceptedListener;
 
     // The default array with the defined strength display names and colors for the different levels in order
     private PasswordStrengthLevel[] strengthLevels = {
@@ -125,7 +126,7 @@ public class PasswordStrengthMeter extends LinearLayout {
         if (showStrengthLabel) {
             strengthLabel = new TextView(context);
             strengthLabel.setGravity(Gravity.END);
-            strengthLabel.setTextSize(TypedValue.COMPLEX_UNIT_PX,textSize);
+            strengthLabel.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
             addView(strengthLabel);
             strengthLabel.setMinWidth(getMaxWidth());
             strengthLabel.setText(strengthLevels[0].getDisplayName());
@@ -154,6 +155,7 @@ public class PasswordStrengthMeter extends LinearLayout {
 
     /**
      * Set animation duration for meter change animations
+     *
      * @param animationDuration
      */
     public void setAnimationDuration(int animationDuration) {
@@ -174,13 +176,16 @@ public class PasswordStrengthMeter extends LinearLayout {
     }
 
 
-
-    private void refresh(){
+    private void refresh() {
         if (input != null) {
             int level = normalizeLevel(passwordStrengthCalculator.calculatePasswordSecurityLevel(input.getText().toString()));
 
-            if(this.passwordStrengthCalculator.passwordAccepted(level))
+            if (this.passwordStrengthCalculator.passwordAccepted(level)) {
                 this.passwordStrengthCalculator.onPasswordAccepted(input.getText().toString());
+                if (this.onPasswordAcceptedListener != null) {
+                    onPasswordAcceptedListener.onPasswordAccepted();
+                }
+            }
 
             if (showStrengthBar) {
                 strengthIndicatorView.setSecurityLevel(normalizeLevel(level), false);
@@ -195,14 +200,15 @@ public class PasswordStrengthMeter extends LinearLayout {
 
     /**
      * Get the maximum width of all level display names
+     *
      * @return the maximum width of the displaynames
      */
-    private int getMaxWidth(){
+    private int getMaxWidth() {
         int max = 0;
         strengthLabel.setMinWidth(0);
-        for(PasswordStrengthLevel level : strengthLevels){
+        for (PasswordStrengthLevel level : strengthLevels) {
             strengthLabel.setText(level.getDisplayName());
-            strengthLabel.measure(0,0);
+            strengthLabel.measure(0, 0);
             max = strengthLabel.getMeasuredWidth() > max ? strengthLabel.getMeasuredWidth() : max;
         }
         return max;
@@ -210,17 +216,17 @@ public class PasswordStrengthMeter extends LinearLayout {
 
 
     /**
-     *
      * Safety methods that normalizes the calculated level to one that is defined. If the strength calculation
      * algorithm returns a number that correctly corresponds to the number of levels defined, this won't do anything.
+     *
      * @param level the non normalized strength level
      * @return normalized strength level
      */
-    private int normalizeLevel(int level){
-        if(level < 0){
+    private int normalizeLevel(int level) {
+        if (level < 0) {
             level = 0;
-        }else if(level >= strengthLevels.length){
-            level = strengthLevels.length-1;
+        } else if (level >= strengthLevels.length) {
+            level = strengthLevels.length - 1;
         }
         return level;
     }
@@ -265,6 +271,13 @@ public class PasswordStrengthMeter extends LinearLayout {
         refresh();
         invalidate();
     }
+    /**
+       Sets a listener for when the password was accepted by the standard rules
+     */
+
+    public void setOnPasswordAcceptedListener(OnPasswordAcceptedListener onPasswordAcceptedListener) {
+        this.onPasswordAcceptedListener = onPasswordAcceptedListener;
+    }
 
     /**
      * Sets whether or not the line indicator should be visible.
@@ -307,7 +320,6 @@ public class PasswordStrengthMeter extends LinearLayout {
     public void setPasswordStrengthCalculator(PasswordStrengthCalculator passwordStrengthCalculator) {
         this.passwordStrengthCalculator = passwordStrengthCalculator;
     }
-
 
 
     /**
@@ -366,6 +378,7 @@ public class PasswordStrengthMeter extends LinearLayout {
 
     /**
      * Convinience method for calculating dp values to pixel values
+     *
      * @param dp the value in dp
      * @return the value in px
      */
